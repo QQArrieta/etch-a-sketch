@@ -16,8 +16,16 @@
             <div class="sliderContainer">
                 <p>Current Grid:<span id="value"></span></p>
                 <input type="range" min="1" max="100" value="1" id="myRange" class="slider">
-                <button onclick= "clearGrid()" >CLEAR GRID</button>
+                <p> Color Selector: </p>
+                <p>R:<span id="Rvalue"></span></p>
+                <input type="range" min="0" max="255" value="0" id="RRange" class="slider">
+                <p>G:<span id="Gvalue"></span></p>
+                <input type="range" min="0" max="255" value="0" id="GRange" class="slider">
+                <p>B:<span id="Bvalue"></span></p>
+                <input type="range" min="0" max="255" value="0" id="BRange" class="slider">  <br>
+                <button onclick= "clearGrid()" >CLEAR GRID</button>  
             </div>
+           
         <div id="container">
 
         </div>
