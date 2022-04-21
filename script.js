@@ -4,11 +4,8 @@ function clearGrid(){
         cell.style.backgroundColor = `rgb(255,255,255)`;
     });
 }
-let slider = document.getElementById("myRange");
-let output = document.getElementById("value");
-let rSlider = document.getElementById("RRange");
-let rOutput = document.getElementById("Rvalue");
-rOutput.innerHTML = rSlider.value;
+function rSliderfunc(){
+    rOutput.innerHTML = rSlider.value;
 rSlider.oninput = function(){ rOutput.innerHTML = this.value};
 rSlider.addEventListener("change", function(){
     let r = rSlider.value;
@@ -17,32 +14,44 @@ rSlider.addEventListener("change", function(){
     gSlider.style.background = rColor;
     bSlider.style.background = rColor;
 });
+}
+function gSliderfunc(){
+    gOutput.innerHTML = gSlider.value;
+    gSlider.oninput = function(){ gOutput.innerHTML = this.value};
+    gSlider.addEventListener("change", function(){
+        let g = gSlider.value;
+        let gColor = `rgb(${rSlider.value}, ${g}, ${bSlider.value})`;
+        gSlider.style.background = gColor;
+        rSlider.style.background = gColor;
+        bSlider.style.background = gColor;
+    });
+}
+function bSliderfunc(){
+    bOutput.innerHTML = bSlider.value;
+    bSlider.oninput = function(){ bOutput.innerHTML = this.value};
+    bSlider.addEventListener("change", function(){
+        let b = bSlider.value;
+        let bColor = `rgb(${rSlider.value}, ${gSlider.value}, ${b})`;
+        bSlider.style.background = bColor;
+        rSlider.style.background = bColor;
+        gSlider.style.background = bColor;
+    });
+}
+let slider = document.getElementById("myRange");
+let output = document.getElementById("value");
+let rSlider = document.getElementById("RRange");
+let rOutput = document.getElementById("Rvalue");
 let gSlider = document.getElementById("GRange");
 let gOutput = document.getElementById("Gvalue");
-gOutput.innerHTML = gSlider.value;
-gSlider.oninput = function(){ gOutput.innerHTML = this.value};
-gSlider.addEventListener("change", function(){
-    let g = gSlider.value;
-    let gColor = `rgb(${rSlider.value}, ${g}, ${bSlider.value})`;
-    gSlider.style.background = gColor;
-    rSlider.style.background = gColor;
-    bSlider.style.background = gColor;
-});
 let bSlider = document.getElementById("BRange");
 let bOutput = document.getElementById("Bvalue");
-bOutput.innerHTML = bSlider.value;
-bSlider.oninput = function(){ bOutput.innerHTML = this.value};
-bSlider.addEventListener("change", function(){
-    let b = bSlider.value;
-    let bColor = `rgb(${rSlider.value}, ${gSlider.value}, ${b})`;
-    bSlider.style.background = bColor;
-    rSlider.style.background = bColor;
-    gSlider.style.background = bColor;
-});
-output.innerHTML = `${slider.value}`+`x`+`${slider.value}`;
-slider.oninput = function(){ output.innerHTML = `${this.value}`+ `x`+ `${this.value}`};
 let x = slider.value;
 let grid = `repeat(` + x + `, 1fr)`;
+rSliderfunc();
+gSliderfunc();
+bSliderfunc();
+output.innerHTML = `${slider.value}`+`x`+`${slider.value}`;
+slider.oninput = function(){ output.innerHTML = `${this.value}`+ `x`+ `${this.value}`};
 let container = document.getElementById("container");
 container.style.gridTemplateColumns = grid;
 container.style.gridTemplateRows = grid;
